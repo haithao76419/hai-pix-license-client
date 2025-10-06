@@ -12,10 +12,10 @@ export default function App() {
       setUser(data.session?.user ?? null);
       setReady(true);
     });
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
+    const { data: sub } = supabase.auth.onAuthStateChange((_e: any, session: any) => {
       setUser(session?.user ?? null);
     });
-    return () => sub.subscription.unsubscribe();
+    return () => sub?.subscription?.unsubscribe();
   }, []);
 
   if (!ready) return <div className="p-6">Đang tải...</div>;
